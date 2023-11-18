@@ -1,0 +1,34 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-title>
+     Trasa
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <ion-header collapse="condense">
+    <ion-toolbar>
+      <ion-title size="large">Tab 1</ion-title>
+    </ion-toolbar>
+  </ion-header>
+
+  <div>
+
+    <ion-item>
+      <ion-label>
+        <h2>Next map point:</h2>
+        <!-- <p>Click to view info</p> -->
+      </ion-label>
+    </ion-item>
+
+    <div *ngFor="let waypoint of mapPoints$ | async; index as i">
+      <ion-item button detail="true" href="/tabs/tab2/details/{{i}}">
+        <ion-label>{{ waypoint.name }}</ion-label>
+
+        <ion-checkbox slot="start"></ion-checkbox>
+      </ion-item>
+    </div>
+  </div>
+  <!-- <app-explore-container name="Tab 1 page"></app-explore-container> -->
+</ion-content>
