@@ -6,4 +6,11 @@
 </div>
 
 
-<button (click)="refreshMap()">test awd wa dwa da</button>
+<ng-container *ngIf="mapPoint">
+  <h3>Wybrany punkt kontrolny:</h3>
+  <p>{{ mapPoint.name }}</p>
+  <p>{{ mapPoint.shortName }}</p>
+  <p>{{ mapPoint.latitude }}</p>
+  <p>{{ mapPoint.longitude }}</p>
+</ng-container>
+<button (click)="refreshMap()">Refresh</button>

@@ -1,7 +1,7 @@
 <ion-header [translucent]="true">
   <ion-toolbar>
     <ion-title>
-      Tab 3
+      Wybierz trasę:
     </ion-title>
   </ion-toolbar>
 </ion-header>
@@ -9,9 +9,18 @@
 <ion-content [fullscreen]="true">
   <ion-header collapse="condense">
     <ion-toolbar>
-      <ion-title size="large">Tab 3</ion-title>
+      <ion-title size="large">Trasy</ion-title>
     </ion-toolbar>
   </ion-header>
 
-  <app-explore-container name="Tab 3 page"></app-explore-container>
+  <div *ngFor="let track of tracks$ | async; index as i">
+    <ion-item>
+      <ion-label>{{ track.name }}: {{ track.description }}</ion-label>
+
+      <ion-button slot="end" [fill]="isTrackSelected(track) ? 'solid' : 'outline'"(click)="selectTrack(track)">Wybierz</ion-button>
+      <ion-badge slot="start" color="primary">{{ track.waypoints.length }}</ion-badge>
+    </ion-item>
+  </div>
+
+  Selected track: {{ selectedTrack$ | async | json }}
 </ion-content>

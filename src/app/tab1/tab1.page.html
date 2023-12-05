@@ -1,7 +1,7 @@
 <ion-header [translucent]="true">
   <ion-toolbar>
     <ion-title>
-     Trasa
+     Punkty kontrolne
     </ion-title>
   </ion-toolbar>
 </ion-header>
@@ -14,21 +14,21 @@
   </ion-header>
 
   <div>
-
     <ion-item>
       <ion-label>
-        <h2>Next map point:</h2>
+        <h2>{{ !!trackSelected ? 'Kolejny punkty kontrolny:' : 'Nie wybrano trasy!'}}</h2>
         <!-- <p>Click to view info</p> -->
       </ion-label>
     </ion-item>
-
     <div *ngFor="let waypoint of mapPoints$ | async; index as i">
-      <ion-item button detail="true" href="/tabs/tab2/details/{{i}}">
-        <ion-label>{{ waypoint.name }}</ion-label>
-
+      <ion-item button detail="true" >
         <ion-checkbox slot="start"></ion-checkbox>
+        <ion-label [routerLink]="'/tabs/tab2/details/' + i">{{ waypoint.name }}</ion-label>
       </ion-item>
     </div>
   </div>
+  <!-- <div>
+    add tracks: <ion-button (click)="addTracks()">add</ion-button>
+  </div> -->
   <!-- <app-explore-container name="Tab 1 page"></app-explore-container> -->
 </ion-content>
